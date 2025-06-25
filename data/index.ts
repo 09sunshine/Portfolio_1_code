@@ -75,7 +75,7 @@ export const projects = [
     title: "Enculture AI",
     des: "Enculture.ai – Engineered an AI‑powered culture transformation platform that helps organizations measure, visualize, and act on employee engagement through advanced analytics, customizable surveys, and real‑time feedback loops.",
     img: "/p1.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
+    iconLists: ["/figma.svg", "/webflow.svg"],
     link: "https://www.enculture.ai/",
   },
   {
@@ -154,6 +154,12 @@ export const companies = [
     id: 5,
     name: "ExpressJS",
     img: "/express.svg",
+    nameImg: "/dockerName.svg",
+  },
+  {
+    id: 6,
+    name: "WebFlow",
+    img: "/webflow.svg",
     nameImg: "/dockerName.svg",
   },
 ];
