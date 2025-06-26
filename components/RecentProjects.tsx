@@ -28,11 +28,11 @@ export const RecentProjects = () => {
                   className="relative w-full h-full overflow-hidden lg:rounded-3xl"
                   style={{ backgroundColor: "#13162D" }}
                 >
-                  <Image height={600} width={600} src="/bg.png" alt="bgimg" />
+                  <Image fill={true} objectFit="cover"  src="/bg.png" alt="bgimg" />
                 </div>
                 <Image
-                  height={600}
-                  width={600}
+                  objectFit="cover"
+                  fill={true}
                   src={item.img}
                   alt="cover"
                   className="z-10 absolute bottom-0 rounded-xl"
