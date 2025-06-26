@@ -22,8 +22,9 @@ export default function Home() {
             src="/Group.svg"
             width={60}
             height={60}
+            className="invisible lg:visible xl:visible 2xl:visible"
             alt="logo"/>
-          <a className="flex justify-between items-center md:hidden sm:hidden lg:inline" href="/SansheyResume.pdf" download="SansheyResume">
+          <a className="flex justify-between items-center invisible lg:visible xl:visible 2xl:visible" href="/SansheyResume.pdf" download="SansheyResume">
             <MagicButton 
             title="Download Resume" 
             icon={<FaDownload/>} position="right"/>

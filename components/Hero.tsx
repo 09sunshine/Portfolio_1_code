@@ -38,7 +38,7 @@ const Hero = () => {
             position='right'/>
             
           </a>
-          <a className="flex justify-between pt-3 items-center lg:hidden " href="/SansheyResume.pdf" download="SansheyResume">
+          <a className="flex justify-between pt-3 items-center lg:invisible xl:invisible 2xl:invisible" href="/SansheyResume.pdf" download="SansheyResume">
             <MagicButton 
             title="Download Resume" 
             icon={<FaDownload/>} position="right"/>
