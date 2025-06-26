@@ -11,48 +11,61 @@ import {
 import { cn } from "@/utils/cn";
 
 // --- Button Component Types ---
-type ButtonOwnProps = {
+interface ButtonProps {
   borderRadius?: string;
   containerClassName?: string;
   borderClassName?: string;
   duration?: number;
   className?: string;
   children: React.ReactNode;
-};
-
-// Main Polymorphic Button Props
-type ButtonProps<C extends React.ElementType> = {
-  as?: C;
-} & ButtonOwnProps &
-  Omit<React.ComponentPropsWithoutRef<C>, keyof ButtonOwnProps | "as">;
+  onClick?: (e: React.MouseEvent) => void;
+  disabled?: boolean;
+  type?: "button" | "submit" | "reset";
+  style?: React.CSSProperties;
+  id?: string;
+  'data-testid'?: string;
+  onMouseEnter?: (e: React.MouseEvent) => void;
+  onMouseLeave?: (e: React.MouseEvent) => void;
+  onFocus?: (e: React.FocusEvent) => void;
+  onBlur?: (e: React.FocusEvent) => void;
+}
 
 // --- Button Component ---
-export const Button = <C extends React.ElementType = "button">(
-  props: ButtonProps<C>
-): JSX.Element => {
-  const {
-    as,
-    borderRadius = "1.75rem",
-    children,
-    containerClassName,
-    borderClassName,
-    duration,
-    className,
-    ...rest
-  } = props;
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      borderRadius = "1.75rem",
+      children,
+      containerClassName,
+      borderClassName,
+      duration,
+      className,
+      onClick,
+      disabled,
+      type = "button",
+      style,
+      ...rest
+    },
+    ref
+  ) => {
+    const buttonStyle = {
+      borderRadius,
+      ...style,
+    };
 
-  const Component = as || "button";
-
-  return (
-    <Component
-      {...(rest as React.ComponentPropsWithoutRef<C>)}
-      className={cn(
-        "bg-transparent relative text-xl p-[1px] overflow-hidden md:col-span-2 md:row-span-1",
-        containerClassName
-      )}
-      style={{ borderRadius }}
-    >
-      <>
+    return (
+      <button
+        ref={ref}
+        type={type}
+        disabled={disabled}
+        onClick={onClick}
+        {...rest}
+        className={cn(
+          "bg-transparent relative text-xl p-[1px] overflow-hidden md:col-span-2 md:row-span-1",
+          containerClassName
+        )}
+        style={buttonStyle}
+      >
         <div
           className="absolute inset-0"
           style={{ borderRadius: `calc(${borderRadius} * 0.96)` }}
@@ -69,33 +82,119 @@ export const Button = <C extends React.ElementType = "button">(
 
         <div
           className={cn(
-            "relative bg-slate-900/[0.] border border-slate-800 backdrop-blur-xl text-white flex items-center justify-center w-full h-full text-sm antialiased",
+            "relative bg-slate-900/[0.8] border border-slate-800 backdrop-blur-xl text-white flex items-center justify-center w-full h-full text-sm antialiased",
             className
           )}
           style={{ borderRadius: `calc(${borderRadius} * 0.96)` }}
         >
           {children}
         </div>
-      </>
-    </Component>
-  );
-};
+      </button>
+    );
+  }
+);
+
+Button.displayName = "Button";
+
+// --- Link Button Component (for when you need an anchor) ---
+interface LinkButtonProps {
+  borderRadius?: string;
+  containerClassName?: string;
+  borderClassName?: string;
+  duration?: number;
+  className?: string;
+  children: React.ReactNode;
+  href: string;
+  target?: string;
+  rel?: string;
+  style?: React.CSSProperties;
+  onClick?: (e: React.MouseEvent) => void;
+}
+
+export const LinkButton = React.forwardRef<HTMLAnchorElement, LinkButtonProps>(
+  (
+    {
+      borderRadius = "1.75rem",
+      children,
+      containerClassName,
+      borderClassName,
+      duration,
+      className,
+      href,
+      target,
+      rel,
+      style,
+      onClick,
+      ...rest
+    },
+    ref
+  ) => {
+    const linkStyle = {
+      borderRadius,
+      ...style,
+    };
+
+    return (
+      <a
+        ref={ref}
+        href={href}
+        target={target}
+        rel={rel}
+        onClick={onClick}
+        {...rest}
+        className={cn(
+          "bg-transparent relative text-xl p-[1px] overflow-hidden md:col-span-2 md:row-span-1 inline-block",
+          containerClassName
+        )}
+        style={linkStyle}
+      >
+        <div
+          className="absolute inset-0"
+          style={{ borderRadius: `calc(${borderRadius} * 0.96)` }}
+        >
+          <MovingBorder duration={duration} rx="30%" ry="30%">
+            <div
+              className={cn(
+                "h-20 w-20 opacity-[0.8] bg-[radial-gradient(#CBACF9_40%,transparent_60%)]",
+                borderClassName
+              )}
+            />
+          </MovingBorder>
+        </div>
+
+        <div
+          className={cn(
+            "relative bg-slate-900/[0.8] border border-slate-800 backdrop-blur-xl text-white flex items-center justify-center w-full h-full text-sm antialiased",
+            className
+          )}
+          style={{ borderRadius: `calc(${borderRadius} * 0.96)` }}
+        >
+          {children}
+        </div>
+      </a>
+    );
+  }
+);
+
+LinkButton.displayName = "LinkButton";
+
 // --- Moving Border Types ---
-type MovingBorderProps = {
+interface MovingBorderProps {
   children: React.ReactNode;
   duration?: number;
   rx?: string;
   ry?: string;
-} & React.SVGAttributes<SVGSVGElement>;
+  className?: string;
+}
 
 // --- Moving Border Component ---
-export const MovingBorder = ({
+export const MovingBorder: React.FC<MovingBorderProps> = ({
   children,
   duration = 2000,
   rx,
   ry,
-  ...otherProps
-}: MovingBorderProps) => {
+  className,
+}) => {
   const pathRef = useRef<SVGRectElement | null>(null);
   const progress = useMotionValue<number>(0);
 
@@ -123,10 +222,9 @@ export const MovingBorder = ({
       <svg
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="none"
-        className="absolute h-full w-full"
+        className={cn("absolute h-full w-full", className)}
         width="100%"
         height="100%"
-        {...otherProps}
       >
         <rect
           fill="none"
@@ -151,3 +249,4 @@ export const MovingBorder = ({
     </>
   );
 };
+
