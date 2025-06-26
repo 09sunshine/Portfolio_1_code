@@ -1,5 +1,5 @@
 
-import { FaLocationArrow } from 'react-icons/fa'
+import { FaLocationArrow, FaDownload } from 'react-icons/fa'
 import MagicButton from './ui/MagicButton'
 import { Spotlight } from './ui/Spotlight'
 import { TextGenerateEffect } from './ui/TextGenerateEffect'
@@ -37,6 +37,11 @@ const Hero = () => {
             title="Show my work" icon={<FaLocationArrow />} 
             position='right'/>
             
+          </a>
+          <a className="flex justify-between pt-3 items-center lg:hidden " href="/SansheyResume.pdf" download="SansheyResume">
+            <MagicButton 
+            title="Download Resume" 
+            icon={<FaDownload/>} position="right"/>
           </a>
         </div>
       

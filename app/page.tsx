@@ -23,7 +23,7 @@ export default function Home() {
             width={60}
             height={60}
             alt="logo"/>
-          <a className="flex justify-between items-center" href="/SansheyResume.pdf" download="SansheyResume">
+          <a className="flex justify-between items-center md:hidden sm:hidden lg:inline" href="/SansheyResume.pdf" download="SansheyResume">
             <MagicButton 
             title="Download Resume" 
             icon={<FaDownload/>} position="right"/>
