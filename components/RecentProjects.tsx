@@ -4,7 +4,7 @@ import { FaLocationArrow } from "react-icons/fa6";
 import Image from 'next/image'
 import { projects } from "@/data";
 import { PinContainer } from "./ui/3d-pin";
-import { cover } from "three/src/extras/TextureUtils.js";
+
 
 export const RecentProjects = () => {
   return (
