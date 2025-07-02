@@ -106,19 +106,19 @@ export const testimonials = [
   },
   {
     quote:
-      "Sanshey brings clarity to chaos—his ability to transform complex ideas into elegant, user-centric interfaces is exceptional. He deeply understands user journeys and consistently delivers high-quality design under pressure. Whether it’s tight timelines or shifting priorities, Sanshey adapts fast and delivers work that not only looks great but solves real problems. A true asset to any product or design team.",
+      "Sanshey brings clarity to chaos. His ability to transform complex ideas into elegant, user-centric interfaces is exceptional. He deeply understands user journeys and consistently delivers high quality design under pressure. Whether it’s tight timelines or shifting priorities, Sanshey adapts fast and delivers work that not only looks great but solves real problems. A true asset to any product or design team.",
     name: "Anuradha Deswani",
     title: "Senior Product Marketing Manager -Enculture AI",
   },
   {
     quote:
-      "Sanshey is a builder at heart. His full-stack capabilities allowed us to move quickly and confidently through our development cycle. He’s not just technically sound but also product-minded—he proactively suggests better ways to implement features and always keeps the end-user in mind. If you're looking for someone who can code, think, and ship like a pro, Sanshey is your guy.",
+      "Sanshey is a builder at heart. His full-stack capabilities allowed us to move quickly and confidently through our development cycle. He's not just technically sound but also product minded he proactively suggests better ways to implement features and always keeps the end user in mind. If you're looking for someone who can code, think, and ship like a pro, Sanshey is your guy.",
     name: "Era Gupta",
     title: "Founder of Paaltu",
   },
   {
     quote:
-      "Working with Sanshey feels like having a full product team in one person. From frontend polish to backend robustness, he delivers with precision and speed. His ability to take a product from concept to deployment—while maintaining clean, scalable code—is rare. We’ve thrown complex challenges at him, and he’s handled them all with maturity and technical depth.",
+      "Working with Sanshey feels like having a full product team in one person. From frontend polish to backend robustness, he delivers with precision and speed. His ability to take a product from concept to deployment while maintaining clean, scalable code is rare. We’ve thrown complex challenges at him, and he’s handled them all with maturity and technical depth.",
     name: "Yuvraj Jwala",
     title: "Director and Project Manager of MMG | Ex-Software Engineer @Swiggy",
   },
