@@ -2,7 +2,7 @@ import { FaLocationArrow } from "react-icons/fa6";
 import Image from 'next/image'
 import { socialMedia } from "@/data";
 import MagicButton from "./ui/MagicButton";
-import { FaHeart } from "react-icons/fa";
+
 
 export const Footer = () => {
   return (
@@ -35,7 +35,7 @@ export const Footer = () => {
       </div>
       <div className="flex mt-16 md:flex-row flex-col justify-between items-center">
         <p className="md:text-base flex gap-2 items-center text-sm md:font-normal font-light">
-            Made with <span className="text-red-500"><FaHeart/></span> by Sanshey
+           Sanshey
         </p>
 
         <div className="flex items-center md:gap-3 gap-6">
